@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Company.Domain
+namespace Company.Domain.Commands.CreateOrder
 {
-    public class Class1
+    public class CreateOrderCommandResult
     {
     }
 }

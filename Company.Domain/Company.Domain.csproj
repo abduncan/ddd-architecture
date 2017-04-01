@@ -42,6 +42,10 @@
       <HintPath>..\packages\FluentValidation.6.4.1\lib\Net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MediatR, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediatR.3.0.1\lib\net45\MediatR.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Commands\CreateOrder\CreateOrderCommand.cs" />
+    <Compile Include="Commands\CreateOrder\CreateOrderCommandHandler.cs" />
     <Compile Include="DomainModels\CustomerAggregate\Customer.cs" />
     <Compile Include="DomainModels\CustomerAggregate\CustomerAddress.cs" />
     <Compile Include="DomainModels\OrderAggregate\Order.cs" />
@@ -61,6 +67,7 @@
     <Compile Include="DomainModels\ProductAggregate\Product.cs" />
     <Compile Include="DomainModels\Shared\State.cs" />
     <Compile Include="Infrastructure\AuditableEntity.cs" />
+    <Compile Include="Infrastructure\CQRS\ICommandHandler.cs" />
     <Compile Include="Infrastructure\Repository\AwesomeStoreContext.cs" />
     <Compile Include="Migrations\201704011547247_init.cs" />
     <Compile Include="Migrations\201704011547247_init.Designer.cs">
