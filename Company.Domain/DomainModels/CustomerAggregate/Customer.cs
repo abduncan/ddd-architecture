@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Company.Domain.DomainModels.CustomerAggregate
 {
-    class Customer
+    public class Customer
     {
         // This property can / should have a private
         // setter because it shouldn't be modified
@@ -17,5 +17,13 @@ namespace Company.Domain.DomainModels.CustomerAggregate
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        private Customer() { }
+
+        public Customer(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }

@@ -23,7 +23,8 @@ namespace Company.Domain.Tests.Infrastruture.Repository
         public void AddLineToOrder()
         {
             var context = new AwesomeStoreContext();
-            var order = new Order(1);
+            var customer = context.Customers.FirstOrDefault();
+            var order = new Order(customer);
             var line = order.AddLine(10, 1);
             context.Orders.Add(order);
             context.OrderLines.Add(line);

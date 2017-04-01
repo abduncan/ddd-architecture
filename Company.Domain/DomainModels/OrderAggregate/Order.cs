@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Company.Domain.DomainModels.CustomerAggregate;
+using Company.Domain.DomainModels.ProductAggregate;
 
 namespace Company.Domain.DomainModels.OrderAggregate
 {
@@ -9,11 +11,12 @@ namespace Company.Domain.DomainModels.OrderAggregate
     // as a whole.
     public class Order
     {
-        public int Id { get; private set; }
+        public int Id { get; private set; } = 0;
 
         public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; private set; }
 
         // Auto initialize readonly property to
         // an empty list to prevent null checks
@@ -23,7 +26,7 @@ namespace Company.Domain.DomainModels.OrderAggregate
         // method.  This allows us to execute
         // aggregate validation when a line is
         // added.
-        public virtual IEnumerable<OrderLine> OrderLines { get; private set; } = new List<OrderLine>();
+        public IEnumerable<OrderLine> OrderLines { get; private set; } = new List<OrderLine>();
 
         // Private constructor is to allow
         // entity framework to instantiate
@@ -36,9 +39,9 @@ namespace Company.Domain.DomainModels.OrderAggregate
         // invalid state.  Since this property
         // is required, we should not let the object 
         // be created without them.
-        public Order(int customerId)
+        public Order(Customer customer)
         {
-            CustomerId = customerId;
+            Customer = customer;
             // Encapsulate the business logic
             // of determining the OrderDate.
             // The logic defines that the order
@@ -58,16 +61,16 @@ namespace Company.Domain.DomainModels.OrderAggregate
          * AddLine method.
          * 
         ****************************************************/
-        public OrderLine AddLine(int quantity, int productId)
+        public OrderLine AddLine(int quantity, Product product)
         {
             // Encapsulate the business logic of 
             // an order can only have one line per
             // product.
-            ValidateProductDoesntExist(productId);
+            ValidateProductDoesntExist(product.Id);
 
             // Create the OrderLine, passing in it's invariants
             // to the constructor.
-            var newLine = new OrderLine(quantity, productId, this);
+            var newLine = new OrderLine(quantity, product, this);
 
             var orderLines = OrderLines.ToList();
             orderLines.Add(newLine);
