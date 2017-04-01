@@ -50,14 +50,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="DomainModels\Order\Order.cs" />
-    <Compile Include="DomainModels\Order\OrderLine.cs" />
+    <Compile Include="DomainModels\CustomerAggregate\Customer.cs" />
+    <Compile Include="DomainModels\CustomerAggregate\CustomerAddress.cs" />
+    <Compile Include="DomainModels\OrderAggregate\Order.cs" />
+    <Compile Include="DomainModels\OrderAggregate\OrderLine.cs" />
+    <Compile Include="DomainModels\Shared\State.cs" />
     <Compile Include="Infrastructure\AuditableEntity.cs" />
+    <Compile Include="Infrastructure\Repository\AwesomeStoreContext.cs" />
+    <Compile Include="Migrations\201704010136010_init.cs" />
+    <Compile Include="Migrations\201704010136010_init.Designer.cs">
+      <DependentUpon>201704010136010_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704010136010_init.resx">
+      <DependentUpon>201704010136010_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
