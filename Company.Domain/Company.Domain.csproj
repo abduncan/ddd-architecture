@@ -57,9 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Commands\CreateOrder\CreateOrderCommand.cs" />
     <Compile Include="Commands\CreateOrder\CreateOrderCommandHandler.cs" />
+    <Compile Include="Commands\CreateOrder\CreateOrderCommandRepository.cs" />
+    <Compile Include="Commands\CreateOrder\CreateOrderCommandResult.cs" />
+    <Compile Include="Commands\CreateOrder\OrderLineCommandModel.cs" />
     <Compile Include="DomainModels\CustomerAggregate\Customer.cs" />
     <Compile Include="DomainModels\CustomerAggregate\CustomerAddress.cs" />
     <Compile Include="DomainModels\OrderAggregate\Order.cs" />
@@ -67,8 +69,8 @@
     <Compile Include="DomainModels\ProductAggregate\Product.cs" />
     <Compile Include="DomainModels\Shared\State.cs" />
     <Compile Include="Infrastructure\AuditableEntity.cs" />
-    <Compile Include="Infrastructure\CQRS\ICommandHandler.cs" />
     <Compile Include="Infrastructure\Repository\AwesomeStoreContext.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Migrations\201704011547247_init.cs" />
     <Compile Include="Migrations\201704011547247_init.Designer.cs">
       <DependentUpon>201704011547247_init.cs</DependentUpon>
